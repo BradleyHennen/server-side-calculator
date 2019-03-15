@@ -10,13 +10,17 @@ function readyNow() {
     });
     $('#clear').on('click', clearInputs)
 
-    $('#plus').on('click', function() {
+    $('#plus').on('click', function(event) {
+        event.preventDefault();
         symbolInput('+')});
-    $('#minus').on('click', function() {
+    $('#minus').on('click', function(event) {
+        event.preventDefault();
         symbolInput('-')});
-    $('#multiply').on('click', function() {
+    $('#multiply').on('click', function(event) {
+        event.preventDefault();
         symbolInput('*')});
-    $('#divide').on('click', function() {
+    $('#divide').on('click', function(event) {
+        event.preventDefault();
         symbolInput('/')});
 
 }
@@ -66,8 +70,21 @@ function symbolInput(symbol) {
 
 function render(outputArray) {
     $('#answer').empty();
-    $('#answer').append(`<span>${outputArray[2]}</span>`);
-    $('#calculation-history').append(`<li>${outputArray[0]} ${outputArray[3]} ${outputArray[1]} = ${outputArray[2]}</li>`)
+    $('#calculation-history').empty();
+    console.log('history array', outputArray);
+    
+    let length = outputArray.length - 1;
+    $('#answer').append(`<span>${outputArray[length].answer}</span>`);
+
+    for (let i = 0; i < outputArray.length; i++) {
+        $('#calculation-history').append(`
+        <li>${outputArray[i].firstNumber} 
+        ${outputArray[i].symbol} 
+        ${outputArray[i].secondNumber} = 
+        ${outputArray[i].answer}
+        </li>`)
+        
+    }
 }
 
 function clearInputs() {

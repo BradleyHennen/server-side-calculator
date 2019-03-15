@@ -16,6 +16,7 @@ app.listen(PORT, () => {
 })
 
 let inputArray = [];
+let historyArray = [];
 
 app.post('/calc', (req, res) => {
     let newCalc = req.body;
@@ -28,7 +29,7 @@ app.post('/calc', (req, res) => {
 
 app.get('/calc', (req, res) => {
     console.log('GET answer');
-    res.send(inputArray);
+    res.send(historyArray);
     
 })
 
@@ -51,7 +52,17 @@ function calculation() {
     console.log('Answer is: ', answer);
     
     inputArray = [];
-    inputArray.push(firstNumber, secondNumber, answer, symbol);
-    console.log(inputArray);
+    console.log('input array', inputArray);
+    
+    let newHistory = {
+        firstNumber: firstNumber,
+        secondNumber: secondNumber,
+        symbol: symbol,
+        answer: answer,
+    }
+
+    //let newHistory = new History (firstNumber, secondNumber, answer, symbol);
+    historyArray.push(newHistory);
+    console.log(historyArray);
     
 }
