@@ -22,16 +22,20 @@ function readyNow() {
     $('#divide').on('click', function(event) {
         event.preventDefault();
         symbolInput('/')});
-
+    getAnswer();
 }
 
 let activeSymbol = '';
-
 
 function addInfo() {
     let firstNumber = $('#first-number').val();
     let secondNumber = $('#second-number').val();
     let symbol = activeSymbol;
+
+    if (firstNumber === '' || secondNumber === '') {
+        return alert('Please fill in all fields')
+    }
+
     $.ajax({
         method: 'POST',
         url: '/calc',
@@ -74,7 +78,10 @@ function render(outputArray) {
     console.log('history array', outputArray);
     
     let length = outputArray.length - 1;
-    $('#answer').append(`<span>${outputArray[length].answer}</span>`);
+    
+    if (outputArray.length > 0) {
+         $('#answer').append(`<span>${outputArray[length].answer}</span>`);
+    }
 
     for (let i = 0; i < outputArray.length; i++) {
         $('#calculation-history').append(`
