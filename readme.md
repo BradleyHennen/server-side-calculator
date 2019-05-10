@@ -1,6 +1,6 @@
 # Server Side Calculator
 
-A calculator that completes logic on the server. It takes in two imputs and along with a mathimatical operator and calculates the results. The application also stores your previous calculations as long as the server running.
+A calculator that completes logic on the server. It takes in two imputs and along with a mathematical operator and calculates the results. The application also stores your previous calculations as long as the server running.
 
 ## Built With
 
@@ -32,7 +32,7 @@ Steps to get the development environment running.
 
 High level list of items completed.
 
-- [x] Calculates mathimatical operations with two inputs
+- [x] Calculates mathematical operations with two inputs
 - [x] Runs calculations on the server side
 - [x] Keeps running history of calculations
 
